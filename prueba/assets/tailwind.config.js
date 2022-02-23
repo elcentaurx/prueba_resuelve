@@ -7,7 +7,15 @@ module.exports = {
     '../lib/*_web/**/*.*ex'
   ],
   theme: {
-    extend: {},
+    extend: {
+      width: {
+          
+          '1/5': '20%',
+          '1/4': '25%',
+          '2/5': '40%',
+          '1/2': '50%'
+        }
+    },
   },
   plugins: [
     require('@tailwindcss/forms')
