@@ -15,14 +15,14 @@
             <button phx-click = "send_json" class="h-8 px-4 m-2 text-sm text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">Send</button>        </div>
          </div>
 
-    <div class = "w-1/2 bg-gray-100 mr-auto p-4 overflow-y-auto "> 
+    <div class = "w-1/2 mr-auto p-4 overflow-y-auto "> 
         <label  class="mx-auto flex justify-center inline-block mb-3 xl:w-96 text-gray-700">Result</label>
-        <%= if @json_out != "" do %>
-         <div class="rounded bg-blue-100  h-64 w-full text-sm overflow-y-scroll p-3">
+        <%= if @json_print != "" do %>
+         <div class=" h-64 w-full justify-center text-sm overflow-y-scroll p-3">
             
             
-            <label   >
-                <%= @json_out %>
+            <label phx-hook = "pretty_json"   >
+                <%= @json_print %>
             </label>
         </div>
         
