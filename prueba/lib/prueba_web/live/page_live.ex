@@ -14,7 +14,6 @@ defmodule PruebaWeb.PageLive do
   -resuelveFC_goal, takes the optional value of goal/bonus after being decoded, can also have a default value
 
   """
-
   def mount(_params, _session, socket) do
     {:ok, assign(socket,
       json_in: "",
@@ -70,7 +69,6 @@ defmodule PruebaWeb.PageLive do
               )}
           {:error, _any} ->  {:noreply, assign(socket, json_in_levels: json_in_levels, json_print: "Json data malformed")}
         end
-
   end
 
   @doc """

@@ -48,7 +48,6 @@ defmodule Prueba.PageHandler do
     |> Enum.find(fn m -> m.level == level end)
     |> case do
       nil ->
-        IO.puts("No level found, adding 0")
         0
       any -> any.value
     end
@@ -75,11 +74,9 @@ defmodule Prueba.PageHandler do
         (((f["goles"] / (f["nivel"] |> get_level_value(resuelveFC_map)) +
         (total_individual_goal/total_team_goal)) / 2 ) * f["bono"]  )
           ) + f["sueldo"] )
-
       |> Map.put("goles_minimos", f["nivel"] |> get_level_value(resuelveFC_map) )
 
       end)
-
   end
 
   @doc """
@@ -92,7 +89,6 @@ defmodule Prueba.PageHandler do
     check_form([%{..., "level" => "A", "value" = 10, ...}, %{..., "level" => "B", "value" => 8, ...}...])
 
   """
-
   def check_form(json_decode) do
     val = json_decode |> length()
     json_decode
@@ -100,9 +96,7 @@ defmodule Prueba.PageHandler do
       |> case do
         {:error, _any} -> false
         [] -> false
-
         data -> (data |> length() ) == val
-
       end
   end
 
@@ -139,7 +133,6 @@ defmodule Prueba.PageHandler do
     - value, any value
 
   """
-
   def keys_to_atoms(string_key_map) when is_map(string_key_map) do
     for {key, val} <- string_key_map,
       into: %{}, do: {String.to_atom(key),
