@@ -2,7 +2,7 @@
 Resuelve backend prueba.
 Este proyecto intenta dar una solución sencilla al ejercicio planteado por [Resuelve](https://github.com/resuelve): [prueba-ing-backend](https://github.com/resuelve/prueba-ing-backend).
 ## Solución
-Puedes ingresar dos archivos Json. 
+Puedes ingresar dos archivos JSON. 
 El primero deberá contener la información de Nivel y goles/mes, estos valores son opcionales,  ejemplo:
 
 ```json
@@ -83,25 +83,23 @@ El resultado incluye un valor calculado de `sueldo_completo` y `goles_minimos` c
 }
 ```
 
-# Prueba
+# Iniciando
+    Se utilizó Elixir + phoenix + TailwindCSS para la realización de este proyecto, en un sistema Windows 11x64
+    y Elixir 1.12.3 (compilado con Erlang/OTP 22)
+## Ejecución   
 
-To start your Phoenix server:
+Para iniciar su servidor Phoenix:
 
-  * Install dependencies with `mix deps.get`
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+  * Instala las dependencias con `mix deps.get`
+  * Inicie el 'endpoint' de Phoenix con `mix phx.server` o dentro de  IEx con `iex -S mix phx.server`
+  * Ahora puedes visitar [`localhost:4000`](http://localhost:4000) desde tu navegador.
 
-  -Use Erlang/OTP 23 [erts-11.2.2.10] [source] [64-bit] [smp:16:16] [ds:16:16:10] [async-threads:1]
-  and
-  Elixir 1.12.3 (compiled with Erlang/OTP 2
+¿Listo para funcionar en producción? Por favor [consulte nuestras guías de implementación](https://hexdocs.pm/phoenix/deployment.html).
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## Aprende más
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+  * Website oficial: https://www.phoenixframework.org/
+  * Guías: https://hexdocs.pm/phoenix/overview.html
+  * Documentación: https://hexdocs.pm/phoenix
+  * Foro: https://elixirforum.com/c/phoenix-forum
+  * Fuente: https://github.com/phoenixframework/phoenix
