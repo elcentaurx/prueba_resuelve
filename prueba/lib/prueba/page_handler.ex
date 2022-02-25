@@ -55,7 +55,7 @@ defmodule Prueba.PageHandler do
   end
 
   @doc """
-    Returns a list of maps adding the value "sueldo completo"
+    Returns a list of maps calculate and add the value "sueldo completo"
     :: List
     ## Parameters
     - json_parced: list of maps to modify, coming from a json decode
@@ -82,6 +82,17 @@ defmodule Prueba.PageHandler do
 
   end
 
+  @doc """
+
+  Check input json :: Boolean
+  Validate that the input json to change goals/bonus data contains actionable information
+    ## Parameters
+    -  json_decode, json decoded with valid values
+    ## Example
+    check_form([%{..., "level" => "A", "value" = 10, ...}, %{..., "level" => "B", "value" => 8, ...}...])
+
+  """
+
   def check_form(json_decode) do
     val = json_decode |> length()
     json_decode
@@ -95,6 +106,18 @@ defmodule Prueba.PageHandler do
       end
   end
 
+  @doc """
+
+  Check input json :: Boolean
+    Validates that the input json contains the necessary values ​​to calculate the full balance
+    ## Parameters
+    -  json_decode, json decoded with valid values
+    ## Example
+    check_form_principal([%{..., "salario_completo": nil, goles: 10, "salario": 50000, "nivel": C, "bono": 5000 ...},
+       %{...,"salario_completo": nil, level: "B", goles: 8,"salario": 40000, "nivel": A, "bono": 6000 ...}...])
+
+  """
+
   def check_form_principal(json_decode) do
     val = json_decode |> length()
     json_decode
@@ -107,6 +130,15 @@ defmodule Prueba.PageHandler do
         data -> (data |> length() ) == val
       end
   end
+
+  @doc """
+    Transforms lists, maps, or values ​​of the form {k => v} to values ​​of the form %{k: v} recursively :: _%{k: v} || [_%{k: v}, _%{k1: v1}]
+    ## Parameters
+    - string_key_map, value of the form {k: v}
+    - keys_to_atoms, value of the form [...%{k: v}, %{k1: v1}...]
+    - value, any value
+
+  """
 
   def keys_to_atoms(string_key_map) when is_map(string_key_map) do
     for {key, val} <- string_key_map,
