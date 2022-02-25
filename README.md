@@ -13,7 +13,7 @@ El primero deberá contener la información de Nivel y goles/mes, estos valores 
       {"level": "Cuauh", "value": 20}
     ]
 ```
-Si no se ingresa un json tomará la información previa:
+Si no se ingresa un JSON tomará la información previa:
 
 | Nivel |Goles/mes|
 | ------------- |:-------------:| 
@@ -22,7 +22,7 @@ Si no se ingresa un json tomará la información previa:
 |C |15|
 |Cuauh |20|
 
-El segundo es necesario para obtener un resultado, debe ingresarse un json con la siguiente estructura:
+El segundo es necesario para obtener un resultado, debe ingresarse un JSON con la siguiente estructura:
 ```json
 {
    "jugadores" : [  
