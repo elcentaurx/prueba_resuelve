@@ -13,10 +13,9 @@ defmodule Prueba.PageHandler do
 
   """
   def total_team_goals(team_goal_data) do
-    total_team_goals =
-      team_goal_data
-      |> Enum.map(fn f -> f.value end)
-      |> Enum.sum
+    team_goal_data
+    |> Enum.map(fn f -> f.value end)
+    |> Enum.sum
   end
 
   @doc """
@@ -30,10 +29,9 @@ defmodule Prueba.PageHandler do
 
   """
   def total_individual_goals(individual_goal_data) do
-    total_individual_goals =
-      individual_goal_data
-      |> Enum.map(fn f -> f["goles"] end)
-      |> Enum.sum
+    individual_goal_data
+    |> Enum.map(fn f -> f["goles"] end)
+    |> Enum.sum
   end
   @doc """
   Return value where map contains level parameter
@@ -70,13 +68,57 @@ defmodule Prueba.PageHandler do
   def calculate_total_salary(json_parced, resuelveFC_map) do
     total_team_goal = total_team_goals(resuelveFC_map)
     total_individual_goal = total_individual_goals(json_parced["jugadores"])
-    json_out = json_parced["jugadores"]
-    |> Enum.map(fn f -> f |> Map.put("sueldo_completo",
-     (
-      (((f["goles"] / (f["nivel"] |> get_level_value(resuelveFC_map)) +
-       (total_individual_goal/total_team_goal)) / 2 ) * f["bono"]  )
-        ) + f["sueldo"] )
-    end)
+    json_parced["jugadores"]
+      |> Enum.map(fn f -> f
+      |> Map.put("sueldo_completo",
+      (
+        (((f["goles"] / (f["nivel"] |> get_level_value(resuelveFC_map)) +
+        (total_individual_goal/total_team_goal)) / 2 ) * f["bono"]  )
+          ) + f["sueldo"] )
+
+      |> Map.put("goles_minimos", f["nivel"] |> get_level_value(resuelveFC_map) )
+
+      end)
+
   end
+
+  def check_form(json_decode) do
+    val = json_decode |> length()
+    json_decode
+      |> Enum.filter(fn f -> !is_nil(f["level"]) and !is_nil(f["value"]) end)
+      |> case do
+        {:error, _any} -> false
+        [] -> false
+
+        data -> (data |> length() ) == val
+
+      end
+  end
+
+  def check_form_principal(json_decode) do
+    val = json_decode |> length()
+    json_decode
+      |> Enum.filter(fn f -> !is_nil(f["nivel"]) and !is_nil(f["goles"])
+        and !is_nil(f["sueldo"]) and !is_nil(f["bono"])
+        end)
+      |> case do
+        {:error, _any} -> false
+        [] -> false
+        data -> (data |> length() ) == val
+      end
+  end
+
+  def keys_to_atoms(string_key_map) when is_map(string_key_map) do
+    for {key, val} <- string_key_map,
+      into: %{}, do: {String.to_atom(key),
+      keys_to_atoms(val)}
+  end
+
+  def keys_to_atoms(string_key_list) when is_list(string_key_list) do
+    string_key_list
+    |> Enum.map(&keys_to_atoms/1)
+  end
+
+  def keys_to_atoms(value), do: value
 
 end
