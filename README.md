@@ -85,7 +85,7 @@ El resultado incluye un valor calculado de `sueldo_completo` y `goles_minimos` c
 
 # Iniciando
     Se utilizó Elixir + phoenix + TailwindCSS para la realización de este proyecto, en un sistema Windows 11x64
-    y Elixir 1.12.3 (compilado con Erlang/OTP 22)
+    - Elixir 1.12.3 (compilado con Erlang/OTP 22)
 ## Ejecución   
 
 Para iniciar su servidor Phoenix:
